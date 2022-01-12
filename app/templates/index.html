@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Index
+
+{% endblock %}
+
+{% block content_title %}
+
+    Добрий день!
+
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <form action="/say" method="POST">
+            <div class="my-4">
+                <input type="text" id="fname" required name="name">
+            </div>
+            <div class="my-4">
+                <input type="submit" value="Привітатись">
+            </div>
+        </form>
+        <a href="{{ url_for('list_names') }}">Список усіх, з ким уже привіталися, можна подивитись тут</a>
+    </div>
+
+
+{% endblock %}
+

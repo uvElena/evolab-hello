@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Hello
+
+{% endblock %}
+
+{% block content_title %}
+
+    Hello!
+
+{% endblock %}
+
+{% block content %}
+
+
+    {% if not is_first_time %}
+        <div class="my-4">
+            Вже бачилися, {{ user.user_name }}
+        </div>
+    {% else %}
+        <div class="my-4">
+            Привіт, {{ user.user_name }}
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}
