@@ -1,17 +1,17 @@
-from flask import render_template, request, current_app
+from flask import render_template, request, Blueprint
 from models import db, User
 
 
-app = current_app
+main = Blueprint('main', __name__)
 
 
-@app.route('/')
+@main.route('/')
 def index():
 
     return render_template('index.html')
 
 
-@app.route('/say', methods=['GET', 'POST'])
+@main.route('/say', methods=['GET', 'POST'])
 def say_hi():
     name = request.form['name']
     user = User.query.filter(User.user_name == name).first()
@@ -26,8 +26,8 @@ def say_hi():
     return render_template('hello.html', user=user, is_first_time=is_first_time)
 
 
-@app.route('/names')
-@app.route('/names/p<int:page>')
+@main.route('/names')
+@main.route('/names/p<int:page>')
 def list_names(page=1):
 
     users = User.query.paginate(page, 5, False)

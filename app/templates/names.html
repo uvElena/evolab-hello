@@ -28,27 +28,27 @@
         <ul class="pagination justify-content-center">
 
             <li class="page-item { '' if users.has_prev else 'disabled' }} ">
-                <a class="page-link" href="{{ url_for('list_names', page=users.prev_num ) }}">Previous</a>
+                <a class="page-link" href="{{ url_for('main.list_names', page=users.prev_num ) }}">Previous</a>
             </li>
             {% if users.has_prev %}
                 <li class="page-item">
-                    <a class="page-link" href="{{ url_for('list_names', page=users.prev_num ) }}">{{ users.prev_num }}</a>
+                    <a class="page-link" href="{{ url_for('main.list_names', page=users.prev_num ) }}">{{ users.prev_num }}</a>
                 </li>
             {% endif %}
 
             <li class="page-item active">
-                <a class="page-link" href="{{ url_for('list_names', page=users.page) }}">{{ users.page }}</a>
+                <a class="page-link" href="{{ url_for('main.list_names', page=users.page) }}">{{ users.page }}</a>
             </li>
 
             {% if users.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="{{ url_for('list_names', page=users.next_num) }}">{{ users.next_num }}</a>
+                    <a class="page-link" href="{{ url_for('main.list_names', page=users.next_num) }}">{{ users.next_num }}</a>
                 </li>
             {% endif %}
 
             <li class="page-item {{ '' if users.has_next else 'disabled' }} ">
                 {% if users.has_next %}
-                    <a class="page-link" href="{{ url_for('list_names', page=users.next_num) }}">Next</a>
+                    <a class="page-link" href="{{ url_for('main.list_names', page=users.next_num) }}">Next</a>
                 {% else %}<p class="page-link">Next</p>
                 {% endif %}
             </li>
