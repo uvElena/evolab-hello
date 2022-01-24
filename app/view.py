@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint
+from flask import render_template, request, Blueprint, abort
 from models import db, User
 
 
@@ -15,6 +15,9 @@ def index():
 def say_hi():
     name = request.form['name']
     user = User.query.filter(User.user_name == name).first()
+    if len(name) > 30:
+        abort(400, description="Too long name")
+
     if user:
         is_first_time = False
     else:
