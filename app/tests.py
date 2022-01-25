@@ -43,15 +43,12 @@ class TestBase(TestCase):
         self.assertIn('Вже бачилися, Олег', response.data.decode("utf-8"))
 
     def test_names(self):
-        response = self.client.post(
-            url_for('main.say_hi'),
-            data={'name': 'Олег'}
-        )
-        self.assertIn('Привіт, Олег', response.data.decode("utf-8"))
+        user = User(user_name='Олег')
+        db.session.add(user)
+        db.session.commit()
 
         response = self.client.get(
-            url_for('main.list_names'),
-            data={'name': 'Олег'}
+            url_for('main.list_names')
         )
         self.assertIn('Вже бачилися з', response.data.decode("utf-8"))
         self.assertIn('Олег', response.data.decode("utf-8"))
