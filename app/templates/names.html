@@ -27,7 +27,7 @@
     <div>
         <ul class="pagination justify-content-center">
 
-            <li class="page-item { '' if users.has_prev else 'disabled' }} ">
+            <li class="page-item {{ '' if users.has_prev else 'disabled' }} ">
                 <a class="page-link" href="{{ url_for('main.list_names', page=users.prev_num ) }}">Previous</a>
             </li>
             {% if users.has_prev %}
@@ -47,10 +47,7 @@
             {% endif %}
 
             <li class="page-item {{ '' if users.has_next else 'disabled' }} ">
-                {% if users.has_next %}
-                    <a class="page-link" href="{{ url_for('main.list_names', page=users.next_num) }}">Next</a>
-                {% else %}<p class="page-link">Next</p>
-                {% endif %}
+                <a class="page-link" href="{{ url_for('main.list_names', page=users.next_num) }}">Next</a>
             </li>
 
         </ul>
