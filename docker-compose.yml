@@ -1,7 +1,8 @@
 services:
   evo:
     build: .
-    ports: 
+    ports:
       - "5001:5001"
     volumes:
       - ./state:/evo/state
+      - ./app:/evo/app
